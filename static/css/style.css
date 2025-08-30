@@ -1,0 +1,121 @@
+:root {
+ --accent: #8be9fd;
+ --accent2: #7c4dff;
+--glass-bg: rgba(20,20,30,0.45);
+ --card-radius: 14px;
+ --text-soft: rgba(255,255,255,0.95);
+ --input-bg: rgba(255,255,255,0.05);
+ --input-focus-bg: rgba(255,255,255,0.08);
+ --input-border: rgba(255,255,255,0.1);
+}
+
+body {
+ background: linear-gradient(180deg, rgba(10,10,20,0.6), rgba(5,5,10,0.95));
+ font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+ color: var(--text-soft);
+ min-height: 100vh;
+}
+
+.navbar {
+ background: transparent !important;
+}
+
+/* Glass Card */
+.card.glass {
+ background: var(--glass-bg);
+ border-radius: var(--card-radius);
+ border: 1px solid rgba(255,255,255,0.06);
+ box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+ color: var(--text-soft);
+ backdrop-filter: blur(12px);
+}
+
+/* Inputs */
+input.form-control,
+textarea.form-control,
+select.form-control {
+ background: var(--input-bg) !important;
+ border: 1px solid var(--input-border);
+ color: var(--text-soft);
+ transition: all 0.2s ease;
+}
+/* Make placeholder text more visible */
+input.form-control::placeholder,
+textarea.form-control::placeholder,
+select.form-control::placeholder {
+ color: rgba(255, 255, 255, 0.7) !important;
+ opacity: 1; /* Firefox ke liye zaroori hai */
+}
+input.form-control:focus,
+textarea.form-control:focus,
+select.form-control:focus {
+ background: var(--input-focus-bg) !important;
+ border: 1px solid var(--accent);
+ color: var(--text-soft);
+}
+
+/* Buttons */
+button.btn,
+button.btn-outline-light {
+ transition: all 0.2s ease;
+}
+.btn-primary {
+ background: linear-gradient(90deg,var(--accent),var(--accent2));
+ border: none;
+ color: #fff;
+ box-shadow: 0 6px 18px rgba(124,77,255,0.06);
+}
+.btn-outline-light {
+ border: 1px solid rgba(255,255,255,0.08);
+ color: #fff;
+}
+
+/* Contacts Card specific styles (if any are needed later) */
+.contacts-card {
+ background: var(--glass-bg);
+ border-radius: var(--card-radius);
+ border: 1px solid rgba(255,255,255,0.06);
+ padding: 1rem;
+ color: var(--text-soft);
+ max-height: 60vh;
+ overflow-y: auto;
+ box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+ backdrop-filter: blur(12px);
+}
+
+.contacts-card table {
+ width: 100%;
+ border-collapse: collapse;
+}
+
+/* General table hover effect for glass cards */
+.card.glass table tr {
+ transition: all 0.3s ease;
+ cursor: pointer;
+}
+.card.glass table tr:hover {
+ background: rgba(255,255,255,0.08);
+ transform: scale(1.01);
+ box-shadow: 0 0 15px rgba(139,233,253,0.2);
+}
+.card.glass table td,
+.card.glass table th {
+ padding: 0.75rem;
+ color: var(--text-soft);
+}
+.card.glass table thead th {
+ color: rgba(255,255,255,0.7);
+ text-transform: uppercase;
+ font-weight: 500;
+}
+
+/* The Ultimate Fix: Make all table parts transparent inside a glass card */
+.card.glass .table,
+.card.glass .table thead,
+.card.glass .table tbody,
+.card.glass .table th,
+.card.glass .table tr,
+.card.glass .table td {
+background-color: transparent !important;
+}
+

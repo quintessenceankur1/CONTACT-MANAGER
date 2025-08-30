@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card glass shadow-sm p-3">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h5 class="mb-0">Recycle Bin</h5>
+    <a class="btn btn-sm btn-outline-light" href="{{ url_for('index') }}"><i class="fa-solid fa-arrow-left"></i> Back</a>
+  </div>
+  <div class="mb-3 d-flex gap-2">
+    <form method="post" action="{{ url_for('restore') }}" class="d-flex gap-2 w-100">
+      <input type="text" name="key" class="form-control" placeholder="Name or Number to restore" required>
+      <button class="btn btn-success" type="submit">Restore</button>
+    </form>
+    <form method="post" action="{{ url_for('recycle_delete') }}" class="d-flex gap-2 w-100">
+      <input type="text" name="key" class="form-control" placeholder="Permanently delete (Name or Number)" required>
+      <button class="btn btn-outline-danger" type="submit">Delete Permanently</button>
+    </form>
+  </div>
+  <div class="table-responsive" style="max-height:60vh; overflow:auto;">
+    <table class="table table-borderless text-white align-middle">
+      <thead class="text-muted small"><tr><th>Name</th><th>Number</th><th>Deleted At</th></tr></thead>
+      <tbody>
+        {% if items %}
+          {% for it in items %}
+          <tr class="table-row-anim">
+            <td>{{ it.name }}</td>
+            <td>{{ it.number }}</td>
+            <td>{{ it.deleted_at }}</td>
+          </tr>
+          {% endfor %}
+        {% else %}
+          <tr><td colspan="3" class="text-center text-muted">Recycle Bin is empty.</td></tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
